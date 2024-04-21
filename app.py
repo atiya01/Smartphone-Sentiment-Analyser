@@ -294,10 +294,10 @@ def main(smartphone_features, smartphone_keywords):
             st.write(f"**Comment {i+1} (Likes: {comment.get('likeCount', 0)})**: {comment['textDisplay']}")
 
 
-        # Extract top 20 smartphone features and visualize them
-        st.subheader("Top 20 Smartphone Features")
+        # Extract top 10 smartphone features and visualize them
+        st.subheader("Top 10 Smartphone Features")
         features = [comment['textDisplay'] for comment in all_comments]
-        word_vectorizer = CountVectorizer(stop_words='english', max_features=20)
+        word_vectorizer = CountVectorizer(stop_words='english', max_features=10)
         word_frequencies = word_vectorizer.fit_transform(features)
         feature_names = word_vectorizer.get_feature_names_out()
         feature_counts = word_frequencies.toarray().sum(axis=0)
